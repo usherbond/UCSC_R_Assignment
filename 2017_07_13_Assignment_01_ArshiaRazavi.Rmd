@@ -1,0 +1,92 @@
+---
+title: "Assignment_01_Arshia Razavi"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+## 1. What	are	the	measures	of	central	tendency of	data?	What	is	the	order	of	these	measures	for	skewed	data?
+A measure of central tendency is a single value that attempts to describe a set of data by identifying the central position within that set of data, they are also called measures of central location and summary statistics; the mean, median and mode are all valid measures of central tendency. 
+When data is skewed the median is considered to be the best representative of the central location of the data. The more skewed the distribution, the greater the difference between the median and mean, and the greater emphasis should be placed on using the median as opposed to the mean.
+
+- The mean (often called the average) is most likely the measure of central tendency it can be used with both discrete and continuous data, the mean is equal to the sum of all the values in the data set divided by the number of values in the data set. The mean has one main disadvantage: it is particularly susceptible to the influence of outliers. These are values that are unusual compared to the rest of the data set by being especially small or large in numerical value.
+
+- The median is the middle score for a set of data that has been arranged in order of magnitude. The median is less affected by outliers and skewed data.
+
+- The mode is the most frequent score in our data set. On a histogram it represents the highest bar in a bar chart or histogram. You can, normally the mode is used for categorical data where we wish to know which the most common category.
+One of the problems with the mode is that it is not unique, so it leaves us with problems when we have two or more values that share the highest frequency. Another problem with the mode is that it will not provide us with a very good measure of central tendency when the most common mark is far away from the rest of the data in the data set.
+If we are dealing with a normal distribution, and tests of normality show that the data is non-normal, it is customary to use the median instead of the mean. 
+
+
+## 2. How	can	you	measure	variation	of	data?
+a. Range
+The range is the simplest measure of variation to find. It is simply the highest value minus the lowest value.
+   RANGE = MAXIMUM - MINIMUM
+Since the range only uses the largest and smallest values, it is greatly affected by extreme values, that is - it is not resistant to change.
+
+b. Variance - "Average Deviation"
+The range only involves the smallest and largest numbers, and it would be desirable to have a statistic which involved all of the data values.
+The first attempt one might make at this is something they might call the average deviation from the mean.
+
+c. Population Variance
+So, to keep it from being zero, the deviation from the mean is squared and called the "squared deviation from the mean". This "average squared deviation from the mean" is called the variance.
+
+d. Standard Deviation
+There is a problem with variances. Recall that the deviations were squared. That means that the units were also squared. To get the units back the same as the original data values, the square root must be taken.
+The sample standard deviation is not the unbiased estimator for the population standard deviation.
+
+
+
+## 3. Create a vector of positive odd integers less than 100
+```
+Vector1 <-  seq(1,100,by = 2)
+Vector1
+```
+
+## 4. Remove the values greater than 60 and less than 80
+```
+Vector2 <-  Vector1[ (Vector1 > 0 & Vector1 <=60 | Vector1 >=80) ]
+Vector2
+```
+
+## 5. Find the five number summary of the remaining set of values
+```
+summary(Vector2)
+```
+## 6. Consider the following vector of values. X <-{8, 14, 9, 15, NA, 8,13, 2,9, NA} Write an R program to return the positions ofthe missing values
+```
+Vector3 <- c(8, 14, 9, 15, NA, 8,13, 2,9, NA)
+summary(Vector3)
+Vector3
+mean(Vector3)
+which(is.na(Vector3))
+```
+## 7. Write an R program to count the number of non-missing values
+```
+is.na.data.frame(Vector3)
+length(which(!is.na(Vector3)))
+```
+## 8. Write an R program to replace the missing values with the mean of the non-missing values.
+```
+Vector3[which(is.na(Vector3))] <- mean(Vector3,na.rm = TRUE)
+Vector3
+```
+
+## 9. Load mtcars data. Write an R program that will rearrange the rows of the data frame so that they are sorted by the value of Horsepower.
+```
+DB_Cars<-mtcars
+new_DB_Cars_Ascendent<-DB_Cars[order(DB_Cars$hp),]
+head(new_DB_Cars_Ascendent)
+new_DB_Cars_Descendent<-DB_Cars[order(decreasing = TRUE,DB_Cars$hp),]
+head(new_DB_Cars_Descendent)
+```
+## 10. Write an R program to count the number of observations with cylinders greater than 4 and gear greater than 3.
+```
+DB_Cars_cylandgear <- DB_Cars[DB_Cars$cyl>4 & DB_Cars$gear>3,]
+DB_Cars_cylandgear
+```
